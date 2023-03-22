@@ -32,9 +32,6 @@ function doPost(e) {
       }else if(message === "下班"){
         writeDataToSheet1(data);
       }
-      
-  }else if(message === "test"){
-    pushLocationRequest();
   }
   
   return ContentService.createTextOutput(JSON.stringify({"status": 200}));
