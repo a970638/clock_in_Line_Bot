@@ -174,40 +174,4 @@ function replyMessage(replyToken, message) {
   function addLeadingZero(number) {
   return number < 10 ? "0" + number : number;
   }
-
-function pushLocationRequest() {
-  var accessToken = LINE_CHANNEL_ACCESS_TOKEN;
-  var userId = json.events[0].source.userId;
-
-  var headers = {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + accessToken
-  };
-
-  var data = {
-    'to': userId,
-    'messages': [
-      {
-        'type': 'text',
-        'text': '请分享您的位置信息'
-      },
-      {
-        'type': 'location',
-        'title': '位置共享',
-        'address': '请分享您的位置',
-        'latitude': 0.0,
-        'longitude': 0.0
-      }
-    ]
-  };
-
-  var options = {
-    'method' : 'post',
-    'headers' : headers,
-    'payload' : JSON.stringify(data)
-  };
-
-  var response = UrlFetchApp.fetch('https://api.line.me/v2/bot/message/push', options);
-  Logger.log(response.getContentText());
-}
   
